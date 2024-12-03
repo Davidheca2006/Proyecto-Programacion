@@ -4,15 +4,12 @@
  */
 package proyectoprogra;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author da_he
  */
-public class JuegoSupermercado {
-    
-    private Producto[] productos;
-    private CarritoDeCompras carrito;
-    private Producto[] listaMama;
-    private double dineroJugador;
-    
+public class CarritodeCompras {
+    private ArrayList<Producto> productos;
 }
