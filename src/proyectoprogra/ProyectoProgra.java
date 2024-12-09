@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package proyectoprogra;
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
+import static proyectoprogra.Supermercado.products;
 
 /**
  *
@@ -16,39 +17,49 @@ public class ProyectoProgra {
      * @param args the command line arguments
      */
     
+    public static Jugador jugador;
     public static void main(String[] args) {
         // TODO code application logic here
+        //carrito del usuario
+        ArrayList<Producto> basket = new ArrayList<Producto>();
+        Index inicio = new Index(basket);
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
+        //llamo a los metodos para generar la lista de mama
+        Supermercado.productosSuper();
+        Supermercado.ListaMama();
         
-        //Inicio inicio = new Inicio();
-        //inicio.setVisible(true);
-        //inicio.setLocationRelativeTo(null);
         Scanner scanner = new Scanner(System.in);
-        Producto[] productos = productos();
-        Producto[] listamama = ListaMama();
-        CarritodeCompras basket = new CarritodeCompras();
-        boolean again=true;
-        do{
-            System.out.println("Instrucciones");
-            int opcion = scanner.nextInt();
-            switch(opcion){
-                case (1):
-                    VerPasillos();
-                case (2):
-                    VerListaMama();
-                case(3):
-                    VerCarrito();
-                case(4): 
-                    
-            }
-        }while(again);
-    }
+        //importo el nombre del usuario
+        String nombre = inicio.getUserName();
+            boolean again=true;
+            do{
+                System.out.println("Instrucciones");
+                int opcion = scanner.nextInt();
+                switch(opcion){
+                    case (1):
+                         Supermercado.verProductos();//nos da una lista de lo que hay en el super
+                        break;
+                    case (2):
+                        Supermercado.verListaMama();//le da al usuario una lista con las cosas que debe comprar
+                        break;
+                    case(3):
+                        Super lista = new Super(jugador);
+                         int objeto = lista.AgregarBasket();
+                         if (objeto!=-1){
+                             Producto obj = products[objeto];
+                             inicio.addBasket(obj);
+                         }
+
+                        break;
+                    case(4): 
+                         //se llevan las cosas a pagar y se ve si se lleva todo
+                        break;
+                    default:
+                        break;
+                }
+            }while(again);
     
-    public static Producto[] ListaMama(){
         
     }
-    
-    public static Producto[] productos(){
-        
-    }
-    
 }

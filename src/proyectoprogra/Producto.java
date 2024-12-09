@@ -12,12 +12,13 @@ public class Producto {
     
     String nombre;
     double precio;
-
+    
+    //constructor
     public Producto(String nombre, double precio) {
         this.nombre = nombre;
         this.precio = precio;
     }
-
+    //getters and setters
     public String getNombre() {
         return nombre;
     }
@@ -32,6 +33,11 @@ public class Producto {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return  "Producto: " + nombre + " | Precio: " + precio + "\n";
     }
     
     

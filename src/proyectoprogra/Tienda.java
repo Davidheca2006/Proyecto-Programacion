@@ -4,6 +4,11 @@
  */
 package proyectoprogra;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 /**
  *
  * @author da_he
@@ -13,7 +18,10 @@ public class Tienda extends javax.swing.JFrame {
     /**
      * Creates new form Tienda
      */
+    FondoPanel fondo1 = new FondoPanel();
+    
     public Tienda() {
+        this.setContentPane(fondo1);
         initComponents();
     }
 
@@ -27,26 +35,22 @@ public class Tienda extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        anterior1 = new javax.swing.JButton();
         siguiente2 = new javax.swing.JButton();
+        anterior1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Fondo1 = new javax.swing.JPanel();
+        Before1 = new javax.swing.JButton();
+        Next2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bienvenido");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
-        anterior1.setBackground(new java.awt.Color(102, 102, 102));
-        anterior1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        anterior1.setText("Anterior");
-        anterior1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anterior1ActionPerformed(evt);
-            }
-        });
 
         siguiente2.setBackground(new java.awt.Color(102, 102, 102));
         siguiente2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -57,31 +61,109 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
+        anterior1.setBackground(new java.awt.Color(102, 102, 102));
+        anterior1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        anterior1.setText("Anterior");
+        anterior1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anterior1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("jButton1");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Tu mamá te acaba de enviar al supermercado a comprar ciertos productos. ");
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Bienvenido");
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Pero si compras demasiado o no traes lo que te pidio, perderás y tu mama te va a pegar ");
+
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Tienes una lista de compras y un presupuesto. Si compras correctamente todo lo que te pidió, ¡ganarás!");
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("\"¡Bienvenido al Supermercado! ");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        Fondo1.setBackground(new java.awt.Color(235, 218, 193));
+
+        Before1.setBackground(new java.awt.Color(102, 102, 102));
+        Before1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Before1.setText("Anterior");
+        Before1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Before1ActionPerformed(evt);
+            }
+        });
+
+        Next2.setBackground(new java.awt.Color(102, 102, 102));
+        Next2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Next2.setText("Siguiente");
+        Next2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Next2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Fondo1Layout = new javax.swing.GroupLayout(Fondo1);
+        Fondo1.setLayout(Fondo1Layout);
+        Fondo1Layout.setHorizontalGroup(
+            Fondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Fondo1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(Before1)
+                .addContainerGap(639, Short.MAX_VALUE))
+            .addGroup(Fondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Fondo1Layout.createSequentialGroup()
+                    .addContainerGap(635, Short.MAX_VALUE)
+                    .addComponent(Next2)
+                    .addGap(16, 16, 16)))
+        );
+        Fondo1Layout.setVerticalGroup(
+            Fondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Fondo1Layout.createSequentialGroup()
+                .addContainerGap(435, Short.MAX_VALUE)
+                .addComponent(Before1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+            .addGroup(Fondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Fondo1Layout.createSequentialGroup()
+                    .addContainerGap(435, Short.MAX_VALUE)
+                    .addComponent(Next2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(16, 16, 16)))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(anterior1)
-                .addContainerGap(735, Short.MAX_VALUE))
+            .addGap(0, 830, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(729, Short.MAX_VALUE)
-                    .addComponent(siguiente2)
-                    .addContainerGap()))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(42, 42, 42)
+                    .addComponent(Fondo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(42, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(544, Short.MAX_VALUE)
-                .addComponent(anterior1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 584, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(543, Short.MAX_VALUE)
-                    .addComponent(siguiente2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(7, 7, 7)))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(49, 49, 49)
+                    .addComponent(Fondo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(50, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,7 +182,7 @@ public class Tienda extends javax.swing.JFrame {
 
     private void anterior1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anterior1ActionPerformed
         // TODO add your handling code here:
-        Inicio anterior = new Inicio();
+        Index anterior = new Index();
         anterior.setVisible(true);
         anterior.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -111,6 +193,18 @@ public class Tienda extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_siguiente2ActionPerformed
+
+    private void Before1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Before1ActionPerformed
+        // TODO add your handling code here:
+        Index anterior = new Index();
+        anterior.setVisible(true);
+        anterior.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_Before1ActionPerformed
+
+    private void Next2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Next2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Next2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,9 +242,32 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Before1;
+    private javax.swing.JPanel Fondo1;
+    private javax.swing.JButton Next2;
     private javax.swing.JButton anterior1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton siguiente2;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.JButton jButton1;
+
+    class FondoPanel extends JPanel {
+        private Image imagen;
+
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (imagen == null) {
+                imagen = new ImageIcon(getClass().getResource("/Imagenes/Super_interacciones.png")).getImage();
+            }
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        }
+    }
 }
