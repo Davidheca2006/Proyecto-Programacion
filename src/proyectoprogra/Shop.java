@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import static proyectoprogra.ProyectoProgra.jugador;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Shop extends javax.swing.JFrame {
         this.setContentPane(fondo);
         this.jugador = jugador;
         initComponents();
+        DineroUsuario.setText("Tu dinero: $"+String.valueOf(jugador.getDinero()));
     }
 
     /**
@@ -63,13 +65,14 @@ public class Shop extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         Next3 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Panel = new javax.swing.JTextPane();
         Fondo4 = new javax.swing.JPanel();
         SuperTab = new javax.swing.JButton();
         ListaTab = new javax.swing.JButton();
         CarritoTab = new javax.swing.JButton();
         EndTab = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Panel = new javax.swing.JTextPane();
+        DineroUsuario = new javax.swing.JLabel();
 
         Fondo1.setBackground(new java.awt.Color(235, 218, 193));
 
@@ -286,6 +289,10 @@ public class Shop extends javax.swing.JFrame {
             }
         });
 
+        Panel.setBackground(new java.awt.Color(166, 124, 82));
+        Panel.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(Panel);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Fondo4.setBackground(new java.awt.Color(235, 218, 193));
@@ -328,9 +335,8 @@ public class Shop extends javax.swing.JFrame {
             }
         });
 
-        Panel.setBackground(new java.awt.Color(166, 124, 82));
-        Panel.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setViewportView(Panel);
+        DineroUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        DineroUsuario.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout Fondo4Layout = new javax.swing.GroupLayout(Fondo4);
         Fondo4.setLayout(Fondo4Layout);
@@ -347,15 +353,15 @@ public class Shop extends javax.swing.JFrame {
                 .addContainerGap(224, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Fondo4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DineroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
         Fondo4Layout.setVerticalGroup(
             Fondo4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Fondo4Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(27, 27, 27)
+                .addComponent(DineroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addComponent(SuperTab, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ListaTab, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -419,7 +425,7 @@ public class Shop extends javax.swing.JFrame {
     
     private void EndTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EndTabActionPerformed
         // TODO add your handling code here:
-        End sig = new End();
+        End sig = new End(jugador, Supermercado.yourProducts, Supermercado.basket);
         sig.setVisible(true);
         sig.setLocationRelativeTo(null);
         this.setVisible(false);
@@ -437,13 +443,10 @@ public class Shop extends javax.swing.JFrame {
         if (jugador == null) {
             JOptionPane.showMessageDialog(this, "El jugador no está inicializado.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        else if (jugador.getTuCarrito().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Tu carrito está vacío.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        }
         else {
-            Carrito sig = new Carrito();
-            sig.setVisible(true);
-            sig.setLocationRelativeTo(null);
+            Carrito carrito = new Carrito(jugador);
+            carrito.setVisible(true);
+            carrito.setLocationRelativeTo(null);
             this.setVisible(false);
         }
     }//GEN-LAST:event_CarritoTabActionPerformed
@@ -480,6 +483,7 @@ public class Shop extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Before1;
     private javax.swing.JButton CarritoTab;
+    private javax.swing.JLabel DineroUsuario;
     private javax.swing.JButton EndTab;
     private javax.swing.JPanel Fondo1;
     private javax.swing.JPanel Fondo2;

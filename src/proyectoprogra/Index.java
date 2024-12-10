@@ -6,7 +6,6 @@ package proyectoprogra;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,15 +15,13 @@ import javax.swing.JPanel;
  * @author da_he
  */
 public class Index extends javax.swing.JFrame {
-     private ArrayList<Producto> carrito;
     /**
      * Creates new form Index
      */
     FondoPanel fondo = new FondoPanel();
     
-    public Index(ArrayList<Producto> carrito) {
+    public Index() {
         this.setContentPane(fondo);
-        this.carrito = carrito;
         initComponents();
     }
 
@@ -38,6 +35,7 @@ public class Index extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton = new javax.swing.JButton();
+        jDialog1 = new javax.swing.JDialog();
         Fondo1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Next1 = new javax.swing.JButton();
@@ -49,6 +47,17 @@ public class Index extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         jButton.setText("jButton1");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -184,7 +193,7 @@ public class Index extends javax.swing.JFrame {
         }
         else{
             
-            Jugador jugador = new Jugador(name, 25.0, carrito); //se crea el jugador
+            Jugador jugador = new Jugador(name, 25.0); //se crea el jugador
             Shop sig = new Shop(jugador);
             sig.setVisible(true);
             sig.setLocationRelativeTo(null);
@@ -192,9 +201,7 @@ public class Index extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_Next1ActionPerformed
-    public void addBasket(Producto producto) {
-        carrito.add(producto);
-    }
+    
     public String getUserName() {
         String name = UserName.getText();
         return name;
@@ -244,6 +251,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton Next1;
     private javax.swing.JTextField UserName;
     private javax.swing.JButton jButton;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

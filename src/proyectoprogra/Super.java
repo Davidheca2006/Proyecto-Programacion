@@ -188,6 +188,8 @@ private Jugador jugador;
             JOptionPane.showMessageDialog(this, "Por favor selecciona un producto. Error");
         } 
         else {
+            Producto producto = Supermercado.products[productoSeleccionado];
+            Supermercado.basket.add(producto);
             JOptionPane.showMessageDialog(this, Supermercado.products[productoSeleccionado].getNombre() + " ha sido agregado a tu carrito.");
     }
         

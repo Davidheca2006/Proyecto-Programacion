@@ -13,14 +13,12 @@ import java.util.ArrayList;
 public class Jugador {
     private String nombre;
     private double dinero;
-    private ArrayList<Producto> tuCarrito;
     
     
     //constructor
-    public Jugador(String nombre, double dinero, ArrayList<Producto> tuCarrito) {    
+    public Jugador(String nombre, double dinero) {    
         this.nombre = nombre;
         this.dinero = dinero;
-        this.tuCarrito = tuCarrito;
     }
 
     //getters and setters
@@ -30,14 +28,6 @@ public class Jugador {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public ArrayList<Producto> getTuCarrito() {
-        return tuCarrito;
-    }
-
-    public void setTuCarrito(ArrayList<Producto> tuCarrito) {
-        this.tuCarrito = tuCarrito;
     }
 
     public double getDinero() {

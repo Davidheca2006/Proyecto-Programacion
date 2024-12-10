@@ -123,10 +123,10 @@ private Jugador jugador;
         this.setVisible(false);
     }//GEN-LAST:event_AnteriorListaActionPerformed
     private void ListaMama() {
-        Frame.setText("");  // Limpiar el JTextArea
+        Frame.setText(""); 
         for (String[] producto : Supermercado.yourProducts) {
-            String nombre = producto[0];   // Primer elemento es el nombre del producto
-            String precio = producto[1];   // Segundo elemento es el precio
+            String nombre = producto[0];   
+            String precio = producto[1];  
 
             Frame.append(". Comprar: " + nombre + "\n");
         }

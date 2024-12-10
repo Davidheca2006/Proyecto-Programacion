@@ -6,6 +6,7 @@ package proyectoprogra;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -19,9 +20,10 @@ private Jugador jugador;
      * Creates new form End
      */
     FondoPanel fondo = new FondoPanel();
-    public End() {
+    public End(Jugador jugador, String[][] yourProducts, ArrayList<Producto> listaMama) {
         this.setContentPane(fondo);
         initComponents();
+        finalizarCompra(jugador, yourProducts, listaMama);
     }
 
     /**
@@ -38,7 +40,6 @@ private Jugador jugador;
         Fondo2 = new javax.swing.JPanel();
         AnteriorCarrito1 = new javax.swing.JButton();
         Fondo3 = new javax.swing.JPanel();
-        AnteriorEnd = new javax.swing.JButton();
         EndMessage = new java.awt.TextArea();
 
         AnteriorCarrito.setBackground(new java.awt.Color(166, 124, 82));
@@ -106,16 +107,6 @@ private Jugador jugador;
         Fondo3.setBackground(new java.awt.Color(235, 218, 193));
         Fondo3.setForeground(new java.awt.Color(166, 124, 82));
 
-        AnteriorEnd.setBackground(new java.awt.Color(166, 124, 82));
-        AnteriorEnd.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        AnteriorEnd.setForeground(new java.awt.Color(255, 255, 255));
-        AnteriorEnd.setText("Anterior");
-        AnteriorEnd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnteriorEndActionPerformed(evt);
-            }
-        });
-
         EndMessage.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout Fondo3Layout = new javax.swing.GroupLayout(Fondo3);
@@ -123,26 +114,16 @@ private Jugador jugador;
         Fondo3Layout.setHorizontalGroup(
             Fondo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Fondo3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AnteriorEnd)
-                .addContainerGap(645, Short.MAX_VALUE))
-            .addGroup(Fondo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Fondo3Layout.createSequentialGroup()
-                    .addGap(114, 114, 114)
-                    .addComponent(EndMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(114, Short.MAX_VALUE)))
+                .addGap(114, 114, 114)
+                .addComponent(EndMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         Fondo3Layout.setVerticalGroup(
             Fondo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Fondo3Layout.createSequentialGroup()
-                .addContainerGap(445, Short.MAX_VALUE)
-                .addComponent(AnteriorEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(Fondo3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Fondo3Layout.createSequentialGroup()
-                    .addGap(134, 134, 134)
-                    .addComponent(EndMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(134, Short.MAX_VALUE)))
+                .addGap(134, 134, 134)
+                .addComponent(EndMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,15 +153,50 @@ private Jugador jugador;
     private void AnteriorCarrito1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorCarrito1ActionPerformed
         
     }//GEN-LAST:event_AnteriorCarrito1ActionPerformed
-
-    private void AnteriorEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnteriorEndActionPerformed
-        // TODO add your handling code here:
-        Shop sig = new Shop(jugador);
-        sig.setVisible(true);
-        sig.setLocationRelativeTo(null);
-        this.setVisible(false);
-    }//GEN-LAST:event_AnteriorEndActionPerformed
-
+    
+    public void finalizarCompra(Jugador jugador, String[][] yourProducts, ArrayList<Producto> listaMama) {
+        double total = 0;
+        boolean todoComprado = true;
+        //imprimo el carrito
+        EndMessage.append("Productos en el carrito:\n");
+        for (Producto i : Supermercado.basket) {
+            EndMessage.append(i.getNombre() + " - Precio: $" + i.getPrecio() + "\n");
+            total += i.getPrecio();
+        }
+        EndMessage.append("\nTotal a pagar: $" + total + "\n");
+        //valido que este toda la lista de la mama
+        todoComprado = FinalLista(Supermercado.yourProducts, Supermercado.basket);
+        //los comentarios
+        if (total > 25) {
+            EndMessage.append("¡Has perdido! Compraste más de lo que podías pagar.\nTotal: $" + total + "\nPresupuesto: $25");
+        } 
+        else if (!todoComprado) {
+            EndMessage.append("¡Tu mamá te regañó! No trajiste todo lo de la lista.");
+        } 
+        else {
+            EndMessage.append("¡Felicidades, eres un buen hijo!\nHas comprado todo lo que tu mamá pidió.\nTotal: $" + total);
+        }
+        EndMessage.revalidate();
+        EndMessage.repaint();
+    }
+    //este metodo me verifica que todo lo que esta en la lista sea igual a mi carrito
+    private boolean FinalLista(String[][] yourProducts, ArrayList<Producto> basket) {
+        for (int i = 0; i < yourProducts.length; i++) {
+            String nombreProductoMama = yourProducts[i][0]; 
+            boolean encontrado = false;
+            for (Producto j : basket) {
+                if (j.getNombre().equalsIgnoreCase(nombreProductoMama)){
+                    encontrado = true;
+                    break; 
+                }
+            }
+            if (!encontrado) {
+                return false; 
+            }
+        }
+        return true; 
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -219,7 +235,6 @@ private Jugador jugador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnteriorCarrito;
     private javax.swing.JButton AnteriorCarrito1;
-    private javax.swing.JButton AnteriorEnd;
     private java.awt.TextArea EndMessage;
     private javax.swing.JPanel Fondo1;
     private javax.swing.JPanel Fondo2;

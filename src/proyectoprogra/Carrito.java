@@ -19,8 +19,8 @@ private Jugador jugador;
      * Creates new form Carrito
      */
     FondoPanel fondo = new FondoPanel();
-    public Carrito() {
-       
+    public Carrito(Jugador jugador) {
+        this.jugador = jugador;
         this.setContentPane(fondo);
         initComponents();
         Listar();  
@@ -140,9 +140,15 @@ private Jugador jugador;
     
     private void Listar(){
         urBasket.setText("");
-        //for (Producto product : jugador.getTuCarrito()) {  
-        //}
-        
+        if (Supermercado.basket.isEmpty()){
+            urBasket.setText("Tu carrito esta vacio. Puedes ir a la tienda para agregarle cosas");
+        }
+        else{
+            urBasket.append(jugador.getNombre()+" este es tu carrito \n");
+            for (Producto i : Supermercado.basket) {  
+                urBasket.append(i.toString());
+            }
+            }
     }
     
     /**

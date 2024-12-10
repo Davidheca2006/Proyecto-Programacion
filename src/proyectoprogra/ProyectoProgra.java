@@ -20,9 +20,8 @@ public class ProyectoProgra {
     public static Jugador jugador;
     public static void main(String[] args) {
         // TODO code application logic here
-        //carrito del usuario
-        ArrayList<Producto> basket = new ArrayList<Producto>();
-        Index inicio = new Index(basket);
+
+        Index inicio = new Index();
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
         //llamo a los metodos para generar la lista de mama
@@ -45,14 +44,18 @@ public class ProyectoProgra {
                         break;
                     case(3):
                         Super lista = new Super(jugador);
-                         int objeto = lista.AgregarBasket();
-                         if (objeto!=-1){
-                             Producto obj = products[objeto];
-                             inicio.addBasket(obj);
-                         }
-
+                        int objeto = lista.AgregarBasket();
+                        if (objeto!=-1){
+                            Producto obj = products[objeto];
+                            Supermercado.basket.add(obj);
+                        }
                         break;
                     case(4): 
+                        End endScreen = new End(jugador, Supermercado.yourProducts, Supermercado.basket);
+                        endScreen.finalizarCompra(jugador, Supermercado.yourProducts, Supermercado.basket);
+                        endScreen.setVisible(true);
+                        endScreen.setLocationRelativeTo(null);
+                        again = false;
                          //se llevan las cosas a pagar y se ve si se lleva todo
                         break;
                     default:
